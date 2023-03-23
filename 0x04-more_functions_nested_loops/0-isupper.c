@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * _isupper - Entry function
  * @c : integer
