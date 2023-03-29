@@ -1,32 +1,26 @@
-#include "main.h"
+#include "holberton.h"
+
 /**
-*cap_string - function that capitalize first character of a word
-*@str: string to capitalize
-*Return:returns the capitalized string
-*/
-char *cap_string(char *str)
+ * cap_string - capitalize all words of a string.
+ * @s: the string to be manipulated.
+ *
+ * Return: s.
+ */
+char *cap_string(char *s)
 {
-	int index = 0;
+	int len, j;
+	char sep[13] = {' ', '\t', '\n', ',', ';', '.', '!',
+		'?', '"', '(', ')', '{', '}'};
 
-	while (str[++index])
+	for (len = 0; s[len] != '\0'; len++)
 	{
-		while (!(str[index] >= 'a' && str[index] <= 'z'))
-			index++;
+		if (len == 0 && s[len] >= 97 && s[len] <= 122)
+			s[len] -= 32;
 
-		if (str[index - 1] == ' ' ||
-				str[index - 1] == 't' ||
-				str[index - 1] == 'n' ||
-				str[index - 1] == ',' ||
-				str[index - 1] == ';' ||
-				str[index - 1] == '.' ||
-				str[index - 1] == '!' ||
-				str[index - 1] == '?' ||
-				str[index - 1] == '"' ||
-				str[index - 1] == '(' ||
-				str[index - 1] == ')' ||
-				str[index - 1] == '{' ||
-				str[index - 1] == '}')
-			str[index] -= 32;
+		for (j = 0; j < 13; j++)
+			if (s[len] == sep[j])
+				if (s[len + 1] >= 97 && s[len + 1] <= 122)
+					s[len + 1] -= 32;
 	}
-	return (str);
+	return (s);
 }
